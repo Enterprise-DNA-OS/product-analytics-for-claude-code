@@ -1,11 +1,44 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "measurement-plan",
+    "title": "Measurement plan for review",
+    "for_each": "select id,code from projects order by code",
+    "file": "code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Purpose and accountability",
+        "sql": "select name,owner,purpose,review_on from projects where id=$1"
+      },
+      {
+        "title": "Tracking contract",
+        "sql": "select name,owner,purpose,required_properties,review_on from event_types where project_id=$1 order by name"
+      },
+      {
+        "title": "Funnel definitions",
+        "sql": "select code,name,steps,window_hours from funnels where project_id=$1 order by code",
+        "note": "Strict timestamp order. First observed entry per person in the selected range. No identity merging."
+      }
+    ]
+  },
+  {
+    "name": "review-record",
+    "title": "Product review and action register",
+    "for_each": "select id,code from projects order by code",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Open questions",
+        "sql": "select reference,rule,finding,owner from review_attention where project_id=$1 order by rule,reference"
+      },
+      {
+        "title": "Decisions and evidence",
+        "sql": "select code,title,owner,due_on,status,evidence from actions where project_id=$1 order by due_on"
+      },
+      {
+        "title": "Changes recorded",
+        "sql": "select actor,operation,details,created_at from activity where project_id=$1 order by created_at",
+        "note": "Operational record, not a tamper-proof audit log. Draft for owner review."
+      }
     ]
   }
 ]

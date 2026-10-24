@@ -1,43 +1,61 @@
 # Product Analytics for Claude Code: operating instructions
 
-This file is the brain. Claude Code reads it at the start of every session. It says who this is for, how work gets done, and the one right way to do each recurring job.
+Read README.md, docs/replace-mixpanel.md and docs/compliance.md first. This is a trusted operator's product review database. Demo identities are fictional. All coding agents use this same command library.
 
-## Who this is for
+## Work from records
 
-- **Business:** [YOUR BUSINESS]
-- **Operator:** [YOUR NAME], [your role]
-- **What matters most:** [the one or two outcomes you care about]
+Start every answer with the CLI. State project, time range and measurement definition. An incomplete export cannot establish inactivity. Never imply identity merges, complete history or production throughput were verified when they were not. Use the correct denominator and keep immature retention cohorts out.
 
-Fill this in once. A worker with context knows. A worker without it guesses.
+## One path per recurring job
 
-## How to work
-
-1. **Take a brief, not a script.** The operator describes the outcome. You run the right command and present the answer.
-2. **Read before you write.** Before drafting anything about a record, read its full history first.
-3. **Plain language.** Short sentences. No filler. Numbers in tables.
-4. **Silent success, loud problems.** No play-by-play. Say what broke and what you did about it.
-5. **Stop at the line.** Anything that sends, deletes, or faces a customer waits for a yes in this session.
-
-## Routing table: one right way for each recurring job
-
-| When the operator asks for... | Use this |
+| Request | Recipe |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| actions | /actions |
+| active users | /active-users |
+| activity | /activity |
+| add action | /add-action |
+| add project | /add-project |
+| attention | /attention |
+| close action | /close-action |
+| cohorts | /cohorts |
+| compliance | /compliance |
+| customise | /customise |
+| daily | /daily |
+| define funnel | /define-funnel |
+| docs | /docs |
+| draft review | /draft-review |
+| events | /events |
+| export | /export |
+| feature adoption | /feature-adoption |
+| flows | /flows |
+| freshness | /freshness |
+| funnel | /funnel |
+| funnels | /funnels |
+| help | /help |
+| import | /import |
+| log | /log |
+| new view | /new-view |
+| projects | /projects |
+| quality | /quality |
+| quiet users | /quiet-users |
+| retention | /retention |
+| review project | /review-project |
+| set rule | /set-rule |
+| show project | /show-project |
+| tracking plan | /tracking-plan |
+| view | /view |
+| weekly review | /weekly-review |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+## Changes and boundaries
 
-## Hard rules
+Use scripts/analytics.mjs for domain work. Writes require --actor. Read first, change only requested records, then verify. Ambiguous references list candidates. Never invent approvals, event properties or closure evidence. Imports begin with --dry-run and source reconciliation. Do not overwrite exports.
 
-- Never send email or messages from here. Draft to `drafts/`, a person sends.
-- Never delete records without an explicit yes in this session. Prefer marking closed or archived.
-- Never invent a record. If a name is ambiguous, list the candidates and ask.
-- The database is the source of truth. If the answer is not in it, say so.
+No sending, publishing, production tracking, vendor credentials, session replay or feature serving. Drafts remain local. No direct access from a browser or anonymous database role. Use a dedicated database and trusted operator connection. The operational log is not tamper-proof. Retention checks prompt review; nothing deletes automatically.
 
-## Where things live
+## Files and tests
 
-- `scripts/` the CLI. `scripts/lib/db.mjs` picks `DATABASE_URL` (Postgres, Supabase) or the embedded database in `.data/`.
-- `supabase/migrations/` the schema, plain SQL. `npm run migrate` applies it.
-- `.claude/commands/` the slash commands. Add one every time the same ask comes twice.
-- `docs/` the thesis and the guide for moving off Mixpanel.
+Use forward migrations in supabase/migrations. Never edit an applied migration. scripts/lib/db.mjs selects PostgreSQL or PGlite. views.json and documents.json use the shared renderers and brand.json. Generated documents and views include all projects available to the operator. Review their scope before sharing.
 
-Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/mixpanel
+Run npm test after a code change. Use temporary test data. TEST_DATABASE_URL must be disposable and empty. Never seed a working customer database. /customise includes a backup, migration, tests and verification.
+
+Omni by Enterprise DNA builds and runs your version: https://enterprisedna.co/omni/book/?offer=replace-software&utm_campaign=mixpanel

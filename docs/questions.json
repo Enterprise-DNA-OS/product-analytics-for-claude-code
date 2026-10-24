@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Which events lack the properties we agreed to collect?",
+    "command": "quality"
+  },
+  {
+    "question": "Which tracking definitions have no accountable owner?",
+    "command": "tracking-plan"
+  },
+  {
+    "question": "Where do people stop between signup, lesson start and completion?",
+    "command": "funnel --ref=ACTIVATION"
+  },
+  {
+    "question": "Which cohorts returned on the seventh day after first observed activity?",
+    "command": "retention --days=7"
+  },
+  {
+    "question": "How many distinct people used the product in this date range?",
+    "command": "active-users"
+  },
+  {
+    "question": "Which features did the observed people use?",
+    "command": "feature-adoption"
+  },
+  {
+    "question": "What event usually follows another in the imported history?",
+    "command": "flows"
+  },
+  {
+    "question": "Which identities have gone quiet for more than a week?",
+    "command": "quiet-users"
+  },
+  {
+    "question": "Which event types have stopped appearing in the export?",
+    "command": "freshness"
+  },
+  {
+    "question": "Which investigations are overdue and who owns them?",
+    "command": "attention"
+  }
+]

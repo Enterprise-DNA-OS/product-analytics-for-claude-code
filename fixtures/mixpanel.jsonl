@@ -1,0 +1,4 @@
+{"event": "Signed up", "properties": {"distinct_id": "fixture-person", "time": 1735689600, "$insert_id": "fx-1", "plan": "trial"}}
+{"event": "Lesson started", "properties": {"distinct_id": "fixture-person", "time": 1735693200, "$insert_id": "fx-2", "lesson_id": "a"}}
+{"event": "Lesson completed", "properties": {"distinct_id": "fixture-person", "time": 1735696800, "$insert_id": "fx-3", "lesson_id": "a"}}
+{"event": "Lesson started", "properties": {"distinct_id": "fixture-person", "time": 1736294400, "$insert_id": "fx-4", "lesson_id": "b"}}

@@ -1,24 +1,9 @@
-# Why there is no front end
+# Why this review system has no front end
 
-Mixpanel is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+The recurring job is to reconcile an event export, review activation and retention, agree which tracking rules need work, and assign the follow-up. Those are database questions and recorded decisions. The CLI and agent recipes finish that job. Branded HTML snapshots give the reviewer something to read or print.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+Mixpanel offers interactive exploration, dashboards, live collection, session replay and its own agent and headless tools. This project does not claim to invent plain-language analysis or reproduce every vendor feature. It gives an operator ownership of imported history and explicit measurement rules.
 
-## What you gain
+A screen adds interactive filtering, charts, mobile navigation and simultaneous work. This free version offers static snapshots, no mobile client, no drag and drop, no real-time shared screen and no offline event collector. A laptop can analyse an already-imported export without a network connection. That is different from recording user activity while offline.
 
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
-
-## What you give up
-
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
-
-## Who this fits
-
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep Mixpanel. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/mixpanel
+Use this build when scheduled product reviews and customised measurement definitions are the job. Keep the existing collection system until its replacement has been designed and tested. Enterprise DNA can provide authorised data collection, a web view, identity mapping and a stack sized for the workload as part of the installed version.

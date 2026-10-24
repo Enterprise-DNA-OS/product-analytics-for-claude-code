@@ -1,13 +1,30 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Product Analytics for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Product review",
+    "subtitle": "Imported snapshots only. Verify coverage before using rates.",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Observed usage",
+        "sql": "select p.code,d.day,d.event_name,d.events,d.users from daily_usage d join projects p on p.id=d.project_id order by d.day,d.event_name"
+      },
+      {
+        "title": "Attention",
+        "sql": "select p.code,a.reference,a.rule,a.finding,a.owner from review_attention a join projects p on p.id=a.project_id order by p.code,a.rule"
+      },
+      {
+        "title": "Tracking defects",
+        "sql": "select p.code,q.event_name,q.distinct_id,q.property,q.finding from event_quality q join projects p on p.id=q.project_id order by p.code,q.event_name"
+      }
+    ]
+  },
+  {
+    "name": "owners",
+    "title": "Tracking responsibility",
+    "sections": [
+      {
+        "title": "Event definitions",
+        "sql": "select p.code,t.name,t.owner,t.purpose,t.required_properties,t.review_on from event_types t join projects p on p.id=t.project_id order by p.code,t.name"
       }
     ]
   }
